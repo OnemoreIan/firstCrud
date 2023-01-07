@@ -7,20 +7,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title:string = 'Angular crud';
-  employs = [
-    {name: 'fatz', position: 'manager'},
-    {name: 'Lupe', position: 'disigner'},
-    {name: 'Mark', position: 'programmer'}
+  employes = [
+    {name: 'fatz', position: 'manager',mail: 'correo de ejemplo'},
+    {name: 'Lupe', position: 'disigner',mail: 'correo de ejemplo'},
+    {name: 'Mark', position: 'programmer',mail: 'correo de ejemplo'}
   ]
 
   model:any ={};
+  model2:any = {};
 
-  addEmploy(dat:string):void{
-    this.employs.push()
+  addEmploy():void{
+    alert('Dato almacenado exitosamente');
+    this.employes.push(this.model)
   }
 
   delEmploy():void{
-    this.employs.pop()
+    //this.employes.pop()
   }
 
   editEmploy():void{

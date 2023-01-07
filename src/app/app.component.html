@@ -16,11 +16,12 @@
 
     <div class="row">
       <div class="col-sm-4">
-        <img width="40" alt="Angular Logo"
+        <img class="img-fluid" alt="Angular Logo"
           src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
       </div>
 
-      <div class="col-sm-8"> <!--input form-->
+      <div class="col-sm-8">
+        <!--input form-->
         <h2>Create Data:</h2>
 
         <form action="" class="form-horizontal">
@@ -36,8 +37,8 @@
           <div class="form-group">
             <label for="position" class="control-label col-sm-2">Position</label>
             <div class="col-sm-10">
-              <input type="text" name="position" id="position" [(ngModel)]="model.position" placeholder="Enter a position"
-                class="form-control">
+              <input type="text" name="position" id="position" [(ngModel)]="model.position"
+                placeholder="Enter a position" class="form-control">
             </div>
           </div>
 
@@ -49,15 +50,87 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <div class="col-sm-10 col-offset-2" >
-              <button type="submit" class="btn btn-info">Hola</button>
+          <div class="form-group my-3">
+            <div class="col-sm-10 col-offset-2">
+              <button type="submit" class="btn btn-success" (click)="addEmploy()">save</button>
             </div>
           </div>
-          
+
 
         </form>
       </div>
 
-    </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <h2>Read Data: </h2>
+          <table class="table table-border table-warning table-responsive">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th>Position</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let x of employes; let i = index">
+                <td>{{x.name}}</td>
+                <td>{{x.position}}</td>
+                <td>{{x.mail}}</td>
+                <td>
+                  <a (click)="editEmploy()" class="btn btn-success">
+                    Edit
+                  </a>
+                  <span class="mx-2"></span>
+                  <a (click)="delEmploy()" class="btn btn-danger">
+                    Deleted
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
+        <div class="col-sm-4">
+          <!--Formulario de edicion de datos-->
+          <h2>Update Data</h2>
+
+          <form action="" class="form-horizontal">
+
+            <div class="form-group">
+              <label for="name" class="control-label col-sm-2">Name</label>
+              <div class="col-sm-10">
+                <input type="text" name="name" id="name" [(ngModel)]="model2.name" placeholder="Enter name"
+                  class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="position" class="control-label col-sm-2">Position</label>
+              <div class="col-sm-10">
+                <input type="text" name="position" id="position" [(ngModel)]="model2.position"
+                  placeholder="Enter a position" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="control-label col-sm-2">Email</label>
+              <div class="col-sm-10">
+                <input type="email" name="email" id="email" [(ngModel)]="model2.email" placeholder="Enter new email"
+                  class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group my-3">
+              <div class="col-sm-10 col-offset-2">
+                <button type="submit" class="btn btn-success" (click)="updateEmploy()">save</button>
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
