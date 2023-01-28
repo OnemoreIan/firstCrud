@@ -16,19 +16,31 @@ export class AppComponent {
   model:any ={};
   model2:any = {};
   myvalue!:any;
-  msg:string = 'Ejemplo';
+  msgS:string = '';
+  msgW:string = '';
+  msgD:string = '';
+  seeEditform: boolean = false;
+
+  close():void{
+    this.msgS = '';
+    this.msgW = '';
+    this.msgD = '';
+  }
 
   addEmploy():void{
     alert('Dato almacenado exitosamente');
     this.employes.push(this.model)
+    this.model={}
+    this.msgS= 'Registro creado';
   }
 
   delEmploy(i:number):void{
     //this.employes.pop()
     let confrimacion = confirm('Are you shure to continue this acction?');
     if (confrimacion) {
-      this.employes.splice(i, 1)
+      this.employes.splice(i,1)
     }
+    this.msgS = 'Registro Eliminado';
   }
 
   editEmploy(i:number):void{
@@ -36,6 +48,7 @@ export class AppComponent {
     this.model2.position = this.employes[i].position;
     this.model2.email = this.employes[i].email;
     this.myvalue = i;
+    this.seeEditform = true
   }
 
   updateEmploy():void{
@@ -49,6 +62,8 @@ export class AppComponent {
       
     }
     console.log(this.model2);
+    this.msgW  = 'Registro editado';
+    this.seeEditform = false;
   }
 
 }

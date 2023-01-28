@@ -5,12 +5,26 @@
     </div>
 
     <div class="col-sm-4">
-      <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="true">
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="msgS">
         <!--<a href="#" class="close" (click)="closeAlert">
           &times;
         </a>-->
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        {{msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="close()"></button>
+        {{msgS}}
+      </div>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="msgW">
+        <!--<a href="#" class="close" (click)="closeAlert">
+          &times;
+        </a>-->
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="close()"></button>
+        {{msgW}}
+      </div>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="msgD">
+        <!--<a href="#" class="close" (click)="closeAlert">
+          &times;
+        </a>-->
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="close()"></button>
+        {{msgD}}
       </div>
     </div>
 
@@ -60,7 +74,7 @@
         </form>
       </div>
 
-      <div class="row">
+      <div class="row"><!--Read and update data-->
         <div class="col-sm-8">
           <h2>Read Data: </h2>
           <table class="table table-border table-warning table-responsive">
@@ -91,7 +105,7 @@
           </table>
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-sm-4" *ngIf="seeEditform">
           <!--Formulario de edicion de datos-->
           <h2>Update Data</h2>
 
