@@ -5,12 +5,12 @@
     </div>
 
     <div class="col-sm-4">
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <!-- <a href="#" class="close">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="true">
+        <!--<a href="#" class="close" (click)="closeAlert">
           &times;
-        </a> -->
+        </a>-->
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        mensaje aqui
+        {{msg}}
       </div>
     </div>
 
@@ -76,13 +76,13 @@
               <tr *ngFor="let x of employes; let i = index">
                 <td>{{x.name}}</td>
                 <td>{{x.position}}</td>
-                <td>{{x.mail}}</td>
+                <td>{{x.email}}</td>
                 <td>
-                  <a (click)="editEmploy()" class="btn btn-success">
+                  <a (click)="editEmploy(i)" class="btn btn-success">
                     Edit
                   </a>
                   <span class="mx-2"></span>
-                  <a (click)="delEmploy()" class="btn btn-danger">
+                  <a (click)="delEmploy(i)" class="btn btn-danger">
                     Deleted
                   </a>
                 </td>
@@ -129,6 +129,9 @@
 
 
           </form>
+          <pre>
+            {{model2 | json}}
+          </pre>
         </div>
 
       </div>
