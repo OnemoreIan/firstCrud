@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title:string = 'Angular crud';
+  title:string = 'Crud en Angular Cli';
   employes = [
     {name: 'fatz', position: 'manager',email: 'correo de fatz'},
     {name: 'Lupe', position: 'disigner',email: 'correo de Lupe'},
@@ -32,6 +33,7 @@ export class AppComponent {
     this.employes.push(this.model)
     this.model={}
     this.msgS= 'Registro creado';
+    this.mensage()
   }
 
   delEmploy(i:number):void{
@@ -64,6 +66,16 @@ export class AppComponent {
     console.log(this.model2);
     this.msgW  = 'Registro editado';
     this.seeEditform = false;
+  }
+
+  mensage(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Registro de datos exitoso',
+      timer: 1500,
+      timerProgressBar: true,
+      showConfirmButton: false
+    })
   }
 
 }
