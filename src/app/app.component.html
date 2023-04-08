@@ -4,6 +4,30 @@
       <h1 class="text-center">{{title}}</h1>
     </div>
 
+    <div class="col-sm-4">
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="msgS">
+        <!--<a href="#" class="close" (click)="closeAlert">
+          &times;
+        </a>-->
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="close()"></button>
+        {{msgS}}
+      </div>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="msgW">
+        <!--<a href="#" class="close" (click)="closeAlert">
+          &times;
+        </a>-->
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="close()"></button>
+        {{msgW}}
+      </div>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="msgD">
+        <!--<a href="#" class="close" (click)="closeAlert">
+          &times;
+        </a>-->
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="close()"></button>
+        {{msgD}}
+      </div>
+    </div>
+
     <div class="row">
 
       <div class="col-sm-4">
@@ -51,38 +75,51 @@
         </form>
       </div>
     </div>
+    
+      <div class="row"><!--Read and update data-->
+        <div class="col-sm-8">
+          <h2>Read Data: </h2>
+          <table class="table table-border table-warning table-responsive">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th>Position</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let x of employes; let i = index">
+                <td>{{x.name}}</td>
+                <td>{{x.position}}</td>
+                <td>{{x.email}}</td>
+                <td>
+                  <a (click)="editEmploy(i)" class="btn btn-success">
+                    Edit
+                  </a>
+                  <span class="mx-2"></span>
+                  <a (click)="delEmploy(i)" class="btn btn-danger">
+                    Deleted
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-    <div class="row">
-      <!--Read and update data-->
-      <div class="col-sm-8">
-        <h2>Read Data: </h2>
-        <table class="table table-border table-warning table-responsive">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th>Position</th>
-              <th>Email</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let x of employes; let i = index">
-              <td>{{x.name}}</td>
-              <td>{{x.position}}</td>
-              <td>{{x.email}}</td>
-              <td>
-                <a (click)="editEmploy(i)" class="btn btn-success">
-                  Edit
-                </a>
-                <span class="mx-2"></span>
-                <a (click)="delEmploy(i)" class="btn btn-danger">
-                  Deleted
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div class="col-sm-4" *ngIf="seeEditform">
+          <!--Formulario de edicion de datos-->
+          <h2>Update Data</h2>
+
+          <form action="" class="form-horizontal">
+
+            <div class="form-group">
+              <label for="name" class="control-label col-sm-2">Name</label>
+              <div class="col-sm-10">
+                <input type="text" name="name" id="name" [(ngModel)]="model2.name" placeholder="Enter name"
+                  class="form-control">
+              </div>
+            </div>
 
       <div class="col-sm-4" *ngIf="seeEditform">
         <!--Formulario de edicion de datos-->
@@ -120,6 +157,11 @@
             </div>
           </div>
 
+          </form>
+          <pre>
+            {{model2 | json}}
+          </pre>
+        </div>
 
         </form>
         <pre>

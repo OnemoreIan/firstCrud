@@ -68,8 +68,6 @@ export class AppComponent {
     this.seeEditform = false;
   }
 
-  
-
   mensage(){
     Swal.fire({
       icon: 'success',
